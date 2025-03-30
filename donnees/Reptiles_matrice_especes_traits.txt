@@ -1,0 +1,21 @@
+"nocturnal_act"	"reprod_mode"	"body_size"	"sexual_matur"	"clutch_size"	"nb_clutch"
+"PODMUR"	0	"oviparous"	58.9	18	6.5	2.5
+"TIMLEP"	0	"oviparous"	174	30	14.5	1
+"RHISCA"	50	"oviparous"	830	48	9	1
+"PODLIO"	0	"oviparous"	45	12	3.7	2.5
+"NATMAU"	20	"oviparous"	530	54	10	1
+"ZOOVIV"	0	"bimodal"	55	24	5.5	1
+"LACAGI"	0	"oviparous"	80	24	9.5	1
+"MALMON"	0	"oviparous"	777	48	8.1	1
+"TARMAU"	80	"oviparous"	77	16	1.5	2
+"HIEVIR"	0	"oviparous"	788	48	9.3	1
+"ANGFRA"	50	"viviparous"	175	54	11.5	1
+"EMYORB"	50	"oviparous"	200	110	8.5	2
+"CHASTR"	0	"viviparous"	185	36	6.7	1
+"LACBIL"	0	"oviparous"	117	24	19	1
+"NATNAT"	20	"oviparous"	843	48	29	1
+"CORAUS"	20	"viviparous"	400	48	9	1
+"ZAMLON"	20	"oviparous"	900	48	9	1
+"CORGIR"	80	"oviparous"	456	48	7.5	1
+"PSAEDW"	0	"oviparous"	45	12	4	2.5
+"PSAALG"	0	"oviparous"	64.5	13	8	1.5

@@ -1,0 +1,23 @@
+"Source"	"Diet"	"Vegetation_strata"	"logmass"	"dietspec"
+"ACTR"	"Oriental"	"Omnivore"	"ground"	4.76983680754333	1.58113883008419
+"CIMA"	"Madagascan"	"Vertebrate"	"ground"	6.45912167547259	3.15096357144468
+"COCH"	"Oriental"	"Omnivore"	"ground"	3.67882911826043	1.75254916376933
+"COCO"	"Palearctic"	"Seed"	"ground"	4.64822967544854	2.81577190634672
+"COFR"	"Madagascan"	"Invertebrate"	"aerial"	2.27212588550934	3.53553390593274
+"ESAS"	"Afrotropical"	"Seed"	"understory"	2.05412373369555	3.53553390593274
+"FOMA"	"Madagascan"	"Seed"	"canopy"	2.79116510781272	2.54950975679639
+"FRPO"	"Oriental"	"Omnivore"	"ground"	5.6746968937611	1.38873014965883
+"GEST"	"Oriental"	"Seed"	"ground"	4.02177386938726	3.53553390593274
+"HYBO"	"Madagascan"	"Fruit"	"canopy"	3.9963641538619	2.37546987833084
+"MAMA"	"Madagascan"	"Seed"	"ground"	5.45958551414416	2.37546987833084
+"PADO"	"Palearctic"	"Seed"	"ground"	3.35340671782581	2.81577190634672
+"PEAS"	"Oriental"	"Seed"	"ground"	4.24132675257075	2.81577190634672
+"PHBO"	"Madagascan"	"Invertebrate"	"aerial"	3.04452243772342	3.53553390593274
+"PLCU"	"Afrotropical"	"Seed"	"understory"	3.62966009445396	2.81577190634672
+"PYJO"	"Oriental"	"Omnivore"	"canopy"	3.34286180464919	1.58113883008419
+"SATE"	"Madagascan"	"Invertebrate"	"understory"	2.54160199346455	3.53553390593274
+"STPI"	"Madagascan"	"Seed"	"ground"	5.15617759938691	2.81577190634672
+"TEBO"	"Madagascan"	"Invertebrate"	"canopy"	2.40694510831829	3.53553390593274
+"TUNI"	"Madagascan"	"Omnivore"	"ground"	4.2312037449393	2.31455024943138
+"ZOBO"	"Madagascan"	"Invertebrate"	"understory"	2.09186406167839	2.12132034355964
+"ZOOL"	"Madagascan"	"Nectar"	"understory"	2.24070968927596	2.37546987833084

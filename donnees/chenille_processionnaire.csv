@@ -1,0 +1,320 @@
+;placette;latitude;longitude;region;domaine;annee;nbpins;nbpinsattac
+1;29141;47,95327323;-4,11657592;Grand Ouest cristallin et oceanique;Atlantique;2012;160;2
+2;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1991;240;50
+3;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1986;250;0
+4;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1992;170;35
+5;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1990;248;24
+6;29141;47,95327323;-4,11657592;Grand Ouest cristallin et oceanique;Atlantique;2009;200;1
+7;29141;47,95327323;-4,11657592;Grand Ouest cristallin et oceanique;Atlantique;2010;200;0
+8;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;1997;189;10
+9;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;1998;189;12
+10;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;1999;189;5
+11;29141;47,95327323;-4,11657592;Grand Ouest cristallin et oceanique;Atlantique;2011;200;0
+12;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;2001;189;8
+13;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;2002;189;8
+14;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;2003;189;14
+15;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;2000;189;15
+16;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1988;250;0
+17;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1989;250;3
+18;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;2007;120;8
+19;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;2002;40;1
+20;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;2003;40;0
+21;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;2004;40;0
+22;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1993;170;30
+23;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1994;170;1
+24;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1995;170;20
+25;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1996;170;33
+26;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1997;170;21
+27;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1998;170;29
+28;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1987;250;2
+29;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;2005;189;27
+30;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;2006;189;27
+31;29141;47,95327323;-4,11657592;Grand Ouest cristallin et oceanique;Atlantique;2008;200;0
+32;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;1994;195;1
+33;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;1995;195;7
+34;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;1996;195;17
+35;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1990;55;0
+36;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1991;55;9
+37;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1992;55;29
+38;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1993;55;30
+39;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1995;40;0
+40;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1996;40;0
+41;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;2004;189;15
+42;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;2000;160;30
+43;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;2001;160;14
+44;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;2000;40;0
+45;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;2001;40;0
+46;56191;47,71604178;-2,49447497;Grand Ouest cristallin et oceanique;Atlantique;1988;290;0
+47;56191;47,71604178;-2,49447497;Grand Ouest cristallin et oceanique;Atlantique;1989;290;0
+48;56191;47,71604178;-2,49447497;Grand Ouest cristallin et oceanique;Atlantique;1990;290;0
+49;56191;47,71604178;-2,49447497;Grand Ouest cristallin et oceanique;Atlantique;1991;290;3
+50;56521;47,71419881;-2,83570788;Grand Ouest cristallin et oceanique;Atlantique;2008;360;0
+51;56521;47,71419881;-2,83570788;Grand Ouest cristallin et oceanique;Atlantique;2009;360;0
+52;56521;47,71419881;-2,83570788;Grand Ouest cristallin et oceanique;Atlantique;2010;360;1
+53;56521;47,71419881;-2,83570788;Grand Ouest cristallin et oceanique;Atlantique;2011;279;0
+54;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1997;40;2
+55;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1998;150;1
+56;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1999;150;0
+57;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;1992;195;22
+58;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;2002;160;10
+59;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;2003;160;13
+60;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;2004;160;11
+61;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;2005;160;17
+62;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;2006;160;24
+63;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;2007;140;26
+64;35111;48,0254496;-1,74684276;Grand Ouest cristallin et oceanique;Atlantique;1986;90;1
+65;35111;48,0254496;-1,74684276;Grand Ouest cristallin et oceanique;Atlantique;1987;90;4
+66;35111;48,0254496;-1,74684276;Grand Ouest cristallin et oceanique;Atlantique;1988;80;2
+67;56521;47,71419881;-2,83570788;Grand Ouest cristallin et oceanique;Atlantique;2012;279;0
+68;35051;47,78486632;-1,93714403;Grand Ouest cristallin et oceanique;Atlantique;1999;170;22
+69;56031;47,76640915;-3,32559935;Grand Ouest cristallin et oceanique;Atlantique;1990;25;1
+70;56031;47,76640915;-3,32559935;Grand Ouest cristallin et oceanique;Atlantique;1991;23;5
+71;35131;47,72559538;-1,88297081;Grand Ouest cristallin et oceanique;Atlantique;1993;195;11
+72;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1987;280;2
+73;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1988;50;0
+74;44141;47,566613;-1,76254862;Grand Ouest cristallin et oceanique;Atlantique;1989;55;0
+75;85221;46,59803301;-0,97379827;Grand Ouest cristallin et oceanique;Atlantique;1991;200;0
+76;56031;47,76640915;-3,32559935;Grand Ouest cristallin et oceanique;Atlantique;1988;25;2
+77;56031;47,76640915;-3,32559935;Grand Ouest cristallin et oceanique;Atlantique;1989;25;3
+78;35111;48,0254496;-1,74684276;Grand Ouest cristallin et oceanique;Atlantique;1990;80;14
+79;56031;47,76640915;-3,32559935;Grand Ouest cristallin et oceanique;Atlantique;1987;45;9
+80;56191;47,71604178;-2,49447497;Grand Ouest cristallin et oceanique;Atlantique;1986;290;0
+81;56191;47,71604178;-2,49447497;Grand Ouest cristallin et oceanique;Atlantique;1987;290;0
+82;85221;46,59803301;-0,97379827;Grand Ouest cristallin et oceanique;Atlantique;1988;220;0
+83;35111;48,0254496;-1,74684276;Grand Ouest cristallin et oceanique;Atlantique;1991;70;27
+84;85221;46,59803301;-0,97379827;Grand Ouest cristallin et oceanique;Atlantique;1990;200;13
+85;85221;46,59803301;-0,97379827;Grand Ouest cristallin et oceanique;Atlantique;1986;220;0
+86;35111;48,0254496;-1,74684276;Grand Ouest cristallin et oceanique;Atlantique;1989;80;4
+87;85221;46,59803301;-0,97379827;Grand Ouest cristallin et oceanique;Atlantique;1989;220;1
+88;85221;46,59803301;-0,97379827;Grand Ouest cristallin et oceanique;Atlantique;1987;220;0
+89;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;2000;105;18
+90;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;2001;105;26
+91;37041;47,24773422;0,3637399;Centre Nord semi-oceanique;Atlantique;1991;1229;35
+92;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1986;131;0
+93;37041;47,24773422;0,3637399;Centre Nord semi-oceanique;Atlantique;1989;1229;0
+94;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;2002;105;13
+95;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1990;115;0
+96;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1991;115;0
+97;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1987;134;0
+98;37041;47,24773422;0,3637399;Centre Nord semi-oceanique;Atlantique;1990;1229;0
+99;37041;47,24773422;0,3637399;Centre Nord semi-oceanique;Atlantique;1986;1229;0
+100;37041;47,24773422;0,3637399;Centre Nord semi-oceanique;Atlantique;1987;1229;0
+101;37041;47,24773422;0,3637399;Centre Nord semi-oceanique;Atlantique;1988;1229;0
+102;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1996;108;0
+103;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1997;105;0
+104;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1998;102;0
+105;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1999;70;0
+106;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;2000;57;0
+107;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1988;134;0
+108;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1989;115;0
+109;49181;47,49967814;0,03935815;Centre Nord semi-oceanique;Atlantique;1986;374;0
+110;49181;47,49967814;0,03935815;Centre Nord semi-oceanique;Atlantique;1987;374;0
+111;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1992;111;0
+112;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1993;108;13
+113;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1994;108;0
+114;37151;47,36921346;0,23572619;Centre Nord semi-oceanique;Atlantique;1995;108;0
+115;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1999;106;9
+116;72101;47,98791165;0,20058909;Centre Nord semi-oceanique;Atlantique;1987;750;8
+117;72101;47,98791165;0,20058909;Centre Nord semi-oceanique;Atlantique;1988;750;4
+118;72101;47,98791165;0,20058909;Centre Nord semi-oceanique;Atlantique;1989;500;11
+119;72101;47,98791165;0,20058909;Centre Nord semi-oceanique;Atlantique;1990;300;36
+120;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1986;350;0
+121;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1987;350;0
+122;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1988;400;0
+123;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1989;400;0
+124;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1990;400;0
+125;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1991;80;30
+126;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1992;80;40
+127;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1994;80;8
+128;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1995;80;0
+129;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1996;80;3
+130;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1997;80;0
+131;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1998;80;0
+132;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;1999;80;0
+133;72161;47,76500741;-0,31829459;Centre Nord semi-oceanique;Atlantique;2000;80;1
+134;72181;47,79603928;-0,32009155;Centre Nord semi-oceanique;Atlantique;2001;148;27
+135;72181;47,79603928;-0,32009155;Centre Nord semi-oceanique;Atlantique;2002;168;18
+136;72181;47,79603928;-0,32009155;Centre Nord semi-oceanique;Atlantique;2003;116;26
+137;72181;47,79603928;-0,32009155;Centre Nord semi-oceanique;Atlantique;2004;116;19
+138;49181;47,49967814;0,03935815;Centre Nord semi-oceanique;Atlantique;1988;374;0
+139;49181;47,49967814;0,03935815;Centre Nord semi-oceanique;Atlantique;1989;374;0
+140;49181;47,49967814;0,03935815;Centre Nord semi-oceanique;Atlantique;1990;374;0
+141;49181;47,49967814;0,03935815;Centre Nord semi-oceanique;Atlantique;1991;374;0
+142;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1986;429;5
+143;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1987;429;3
+144;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1988;429;0
+145;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1989;429;2
+146;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1990;429;5
+147;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1991;429;5
+148;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1992;250;10
+149;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1993;250;20
+150;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1994;240;5
+151;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1995;240;20
+152;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1996;250;5
+153;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1997;250;0
+154;49211;47,60437859;-0,35476481;Centre Nord semi-oceanique;Atlantique;1998;240;4
+155;72101;47,98791165;0,20058909;Centre Nord semi-oceanique;Atlantique;1986;750;4
+156;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1986;400;0
+157;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1987;425;0
+158;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1988;425;0
+159;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1989;425;0
+160;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1990;425;1
+161;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1991;425;41
+162;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1992;425;40
+163;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1993;425;50
+164;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1994;425;0
+165;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1995;317;17
+166;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1996;317;18
+167;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1997;317;0
+168;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1998;317;0
+169;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;1999;317;4
+170;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;2000;317;15
+171;86101;46,4436025;0,53791839;Centre Nord semi-oceanique;Atlantique;2001;200;15
+172;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;2005;116;45
+173;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;2006;116;12
+174;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;2004;116;33
+175;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;1993;324;49
+176;33A01;44,33919689;-0,28900582;Sud-Ouest oceanique;Atlantique;2011;237;15
+177;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;2007;99;29
+178;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;1992;326;11
+179;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;1999;195;70
+180;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;2000;188;113
+181;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;2002;188;6
+182;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;2003;123;29
+183;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;2004;181;67
+184;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;2005;181;13
+185;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;2006;124;0
+186;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;2007;124;1
+187;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;1992;174;3
+188;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;1993;174;63
+189;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;1994;174;55
+190;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;1995;323;21
+191;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;1996;323;80
+192;17341;45,12523519;-0,24971596;Sud-Ouest oceanique;Atlantique;2005;198;5
+193;17341;45,12523519;-0,24971596;Sud-Ouest oceanique;Atlantique;2006;196;23
+194;17341;45,12523519;-0,24971596;Sud-Ouest oceanique;Atlantique;2007;195;31
+195;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;2002;151;28
+196;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;2003;151;44
+197;16281;45,5234226;0,38884301;Sud-Ouest oceanique;Atlantique;2011;300;48
+198;44181;47,43679791;-2,4103559;Sud-Ouest oceanique;Atlantique;1994;73;0
+199;44181;47,43679791;-2,4103559;Sud-Ouest oceanique;Atlantique;1995;70;0
+200;44181;47,43679791;-2,4103559;Sud-Ouest oceanique;Atlantique;1996;70;2
+201;44181;47,43679791;-2,4103559;Sud-Ouest oceanique;Atlantique;1997;70;9
+202;44181;47,43679791;-2,4103559;Sud-Ouest oceanique;Atlantique;1999;70;1
+203;40281;44,02799003;-1,32825612;Sud-Ouest oceanique;Atlantique;1994;323;46
+204;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;1995;174;35
+205;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;1996;174;65
+206;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;1997;174;70
+207;16281;45,5234226;0,38884301;Sud-Ouest oceanique;Atlantique;2008;310;22
+208;16281;45,5234226;0,38884301;Sud-Ouest oceanique;Atlantique;2009;310;23
+209;16281;45,5234226;0,38884301;Sud-Ouest oceanique;Atlantique;2010;310;18
+210;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;2000;111;87
+211;16281;45,5234226;0,38884301;Sud-Ouest oceanique;Atlantique;2012;300;53
+212;17241;45,22207033;-0,04765004;Sud-Ouest oceanique;Atlantique;1997;208;172
+213;17241;45,22207033;-0,04765004;Sud-Ouest oceanique;Atlantique;1998;206;9
+214;17241;45,22207033;-0,04765004;Sud-Ouest oceanique;Atlantique;1999;206;15
+215;17341;45,12523519;-0,24971596;Sud-Ouest oceanique;Atlantique;2001;277;5
+216;44181;47,43679791;-2,4103559;Sud-Ouest oceanique;Atlantique;2000;70;0
+217;17341;45,12523519;-0,24971596;Sud-Ouest oceanique;Atlantique;2003;277;46
+218;17341;45,12523519;-0,24971596;Sud-Ouest oceanique;Atlantique;2004;276;58
+219;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;1999;195;16
+220;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;2000;156;9
+221;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;2001;151;24
+222;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;1999;174;77
+223;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;2004;110;65
+224;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;2001;111;12
+225;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;2002;111;15
+226;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;2003;111;73
+227;44181;47,43679791;-2,4103559;Sud-Ouest oceanique;Atlantique;2001;70;20
+228;40661;44,23970266;-1,0808269;Sud-Ouest oceanique;Atlantique;2009;346;25
+229;17341;45,12523519;-0,24971596;Sud-Ouest oceanique;Atlantique;2002;277;6
+230;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;1996;249;72
+231;40A81;43,92747199;-0,45385876;Sud-Ouest oceanique;Atlantique;2012;305;4
+232;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;1998;195;9
+233;40A81;43,92747199;-0,45385876;Sud-Ouest oceanique;Atlantique;2011;305;295
+234;40311;44,01454405;-0,83981985;Sud-Ouest oceanique;Atlantique;1998;174;60
+235;40163;43,84618029;-0,85900388;Sud-Ouest oceanique;Atlantique;1997;196;29
+236;40661;44,23970266;-1,0808269;Sud-Ouest oceanique;Atlantique;2012;306;80
+237;40661;44,23970266;-1,0808269;Sud-Ouest oceanique;Atlantique;2010;306;280
+238;40661;44,23970266;-1,0808269;Sud-Ouest oceanique;Atlantique;2011;306;285
+239;40A81;43,92747199;-0,45385876;Sud-Ouest oceanique;Atlantique;2010;305;275
+240;19011;45,17329382;1,67777245;Massif central;Atlantique;1996;107;7
+241;19011;45,17329382;1,67777245;Massif central;Atlantique;2008;78;2
+242;19011;45,17329382;1,67777245;Massif central;Atlantique;2009;78;7
+243;19011;45,17329382;1,67777245;Massif central;Atlantique;1999;107;2
+244;19011;45,17329382;1,67777245;Massif central;Atlantique;2000;101;5
+245;19011;45,17329382;1,67777245;Massif central;Atlantique;1997;107;1
+246;19011;45,17329382;1,67777245;Massif central;Atlantique;1998;107;2
+247;19011;45,17329382;1,67777245;Massif central;Atlantique;2003;108;10
+248;19011;45,17329382;1,67777245;Massif central;Atlantique;1994;107;0
+249;19011;45,17329382;1,67777245;Massif central;Atlantique;2001;101;8
+250;19041;45,15838233;1,3117074;Massif central;Atlantique;2002;93;5
+251;30201;44,06595577;3,96092207;Massif central;Atlantique;2008;128;26
+252;30201;44,06595577;3,96092207;Massif central;Atlantique;2009;121;11
+253;19011;45,17329382;1,67777245;Massif central;Atlantique;1995;107;31
+254;30201;44,06595577;3,96092207;Massif central;Atlantique;2011;121;0
+255;30201;44,06595577;3,96092207;Massif central;Atlantique;2012;121;3
+256;19011;45,17329382;1,67777245;Massif central;Atlantique;2002;108;3
+257;30201;44,06595577;3,96092207;Massif central;Atlantique;2010;121;2
+258;19011;45,17329382;1,67777245;Massif central;Atlantique;2005;108;5
+259;19011;45,17329382;1,67777245;Massif central;Atlantique;2006;108;2
+260;19011;45,17329382;1,67777245;Massif central;Atlantique;2007;78;1
+261;19041;45,15838233;1,3117074;Massif central;Atlantique;2000;143;1
+262;19041;45,15838233;1,3117074;Massif central;Atlantique;2001;114;2
+263;19041;45,15838233;1,3117074;Massif central;Atlantique;1994;150;1
+264;19011;45,17329382;1,67777245;Massif central;Atlantique;2010;78;13
+265;19011;45,17329382;1,67777245;Massif central;Atlantique;2011;78;2
+266;19011;45,17329382;1,67777245;Massif central;Atlantique;2012;78;3
+267;19041;45,15838233;1,3117074;Massif central;Atlantique;1998;150;1
+268;19041;45,15838233;1,3117074;Massif central;Atlantique;1995;150;0
+269;19041;45,15838233;1,3117074;Massif central;Atlantique;1996;150;3
+270;19011;45,17329382;1,67777245;Massif central;Atlantique;2004;108;0
+271;19042;45,17568762;1,29681186;Massif central;Atlantique;2005;93;0
+272;19041;45,15838233;1,3117074;Massif central;Atlantique;1999;150;0
+273;19081;45,21617451;1,54883797;Massif central;Atlantique;2012;155;4
+274;19042;45,17568762;1,29681186;Massif central;Atlantique;2004;93;10
+275;19042;45,17568762;1,29681186;Massif central;Atlantique;2006;93;1
+276;19042;45,17568762;1,29681186;Massif central;Atlantique;2003;123;6
+277;19081;45,21617451;1,54883797;Massif central;Atlantique;2008;155;11
+278;19041;45,15838233;1,3117074;Massif central;Atlantique;1997;150;0
+279;19042;45,17568762;1,29681186;Massif central;Atlantique;2007;65;14
+280;19081;45,21617451;1,54883797;Massif central;Atlantique;2011;155;17
+281;19081;45,21617451;1,54883797;Massif central;Atlantique;2010;155;36
+282;19081;45,21617451;1,54883797;Massif central;Atlantique;2009;155;19
+283;11671;42,93869191;2,79114126;Mediterranee;Mediterraneen;2008;208;21
+284;11671;42,93869191;2,79114126;Mediterranee;Mediterraneen;2009;208;24
+285;11671;42,93869191;2,79114126;Mediterranee;Mediterraneen;2010;200;45
+286;11671;42,93869191;2,79114126;Mediterranee;Mediterraneen;2011;180;21
+287;11671;42,93869191;2,79114126;Mediterranee;Mediterraneen;2012;180;15
+288;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1990;163;35
+289;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1991;163;64
+290;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1992;163;51
+291;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1993;163;57
+292;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1994;163;0
+293;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1995;163;4
+294;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1996;163;7
+295;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1997;163;23
+296;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1998;163;11
+297;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1999;163;15
+298;66331;42,44102038;3,13527943;Mediterranee;Mediterraneen;2001;163;17
+299;66331;42,44102038;3,13527943;Mediterranee;Mediterraneen;2002;163;3
+300;66331;42,44102038;3,13527943;Mediterranee;Mediterraneen;2003;163;34
+301;66331;42,44102038;3,13527943;Mediterranee;Mediterraneen;2004;163;11
+302;66331;42,44102038;3,13527943;Mediterranee;Mediterraneen;2005;163;42
+303;66331;42,44102038;3,13527943;Mediterranee;Mediterraneen;2006;50;19
+304;66331;42,44102038;3,13527943;Mediterranee;Mediterraneen;2007;50;41
+305;83311;43,17938308;6,33879665;Mediterranee;Mediterraneen;2008;182;1
+306;83311;43,17938308;6,33879665;Mediterranee;Mediterraneen;2009;182;11
+307;83311;43,17938308;6,33879665;Mediterranee;Mediterraneen;2010;182;18
+308;83311;43,17938308;6,33879665;Mediterranee;Mediterraneen;2011;182;4
+309;83311;43,17938308;6,33879665;Mediterranee;Mediterraneen;2012;182;1
+310;83401;43,44562607;6,89048187;Mediterranee;Mediterraneen;2009;230;28
+311;83401;43,44562607;6,89048187;Mediterranee;Mediterraneen;2010;200;5
+312;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1986;163;54
+313;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1987;163;5
+314;66241;42,44426747;3,14871959;Mediterranee;Mediterraneen;1988;163;30
+315;83101;43,24208166;6,33852736;Mediterranee;Mediterraneen;1986;115;0
+316;83101;43,24208166;6,33852736;Mediterranee;Mediterraneen;1987;115;2
+317;83101;43,24208166;6,33852736;Mediterranee;Mediterraneen;1989;105;1
+318;83401;43,44562607;6,89048187;Mediterranee;Mediterraneen;2012;150;0
+319;83401;43,44562607;6,89048187;Mediterranee;Mediterraneen;2011;200;4

@@ -1,0 +1,24 @@
+"wing_length"	"mobility"	"polyphagie"	"type_host_plant"	"Ngener"	"Neggs"
+"BRCI"	34.5	4	"oligo"	"grasses"	1	250
+"CEAR"	14	5	"poly"	"shrub_tree_liane"	3	130
+"COAR"	18	3	"oligo"	"grasses"	1	77
+"COPA"	15	3	"oligo"	"grasses"	3	143
+"COCR"	25	8	"oligo"	"herbaceous_dicots"	3	500
+"EVAR"	11	4	"oligo"	"herbaceous_dicots_shrub"	3	160
+"GORH"	28	6	"mono"	"shrub"	1	600
+"HISE"	26	4	"oligo"	"grasses"	1	413
+"HIST"	23	3	"oligo"	"grasses"	1	140
+"LAME"	22	4	"oligo"	"grasses"	3	193
+"LIRE"	25	4	"mono"	"liane"	2	140
+"LYPH"	13	4	"strongly_oligo"	"herbaceous_dicots"	3.5	160
+"MAJU"	24	4	"oligo"	"grasses"	1	300
+"MEAT"	19	3	"mono"	"herbaceous_dicots"	1	240
+"MIDR"	26.5	3	"mono"	"grasses"	1	180
+"OCVE"	14	4	"oligo"	"grasses"	1	85
+"PIBR"	30	7	"oligo"	"herbaceous_dicots"	4	1100
+"PLID"	14	3	"poly"	"herbaceous_dicots_shrub"	2	104
+"POIC"	15	4	"oligo"	"herbaceous_dicots"	3	300
+"PYTI"	19	3	"oligo"	"grasses"	1	240
+"SAIL"	16	3	"strongly_oligo"	"tree"	1	64
+"THSY"	14	3	"oligo"	"grasses"	1	170
+"VAAT"	29	9	"mono"	"herbaceous_dicots"	3	900
