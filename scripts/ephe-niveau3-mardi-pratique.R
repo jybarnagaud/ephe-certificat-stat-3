@@ -113,7 +113,7 @@ nzdata=list(obs=obs,PROPNATFOR=PROPNATFOR,altitude=altitude,year=year,julian_dat
 monitor=c("pmean","fit","fit.new","N","beta.det","beta","delta","mualpha","muyear","det.alpha")
 
 # lancer le modèle
-jnz=jags.model(file="nouvelle_zelande_modele.R", data=nzdata, n.chains=3, n.adapt=1000)
+jnz=jags.model(file="donnees/nouvelle_zelande_modele.R", data=nzdata, n.chains=3, n.adapt=1000)
 
 # ce message d'erreur suggère qu'il va falloir initialiser quelque chose - en l'occurrence, N
 # on choisit d'initialiser N avec la valeur maximum observée par point
