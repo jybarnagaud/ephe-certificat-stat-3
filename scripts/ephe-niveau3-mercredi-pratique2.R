@@ -135,7 +135,7 @@ plot(res.urb)
 # NB : il faut refaire tourner la fonction à chaque fois qu'on change la structure de covariables... réfléchissez bien le modèle avant!
 #rs=expand.grid(r=seq(1,1001, by=50), sat=1:40)
 #term.inter=profilepl(rs, 
-Geyer, rept.ppp,~urb+temp)
+#Geyer, rept.ppp,~urb+temp)
 # on obtient  r = 1001 and sat = 7
 
 

@@ -1,0 +1,317 @@
+---
+title: "TP Indices de diversité - master Rainet"
+author: "Jean-Yves Barnagaud (jean-yves.barnagaud@ephe.psl.eu)"
+date: "20 janvier 2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = 'C:/Users/JYB/Documents/TP reptiles')
+
+```
+
+## Objectifs
+
+Ce cas d'étude permet d'aborder deux questions distinctes :  
+* la problématique d'un effort d'échantillonnage hétérogène
+* l'analyse des relations entre diversité des communautés et environnement  
+
+Nous nous basons pour cela sur un jeu de données portant sur les reptiles de la région Occitanie, acquis au début des années 2010 sur un créneau de 5 ans (P Geniez & M Cheylan, CEFE-EPHE, base de données Malpolon). Les données sont des observations opportunistes rapportées par des observateurs amateurs ou professionnels et bancarisées après validation. Toute donnée est constituée d'une espèce, d'un jeu de coordonnées géographiques et d'une date, plus des métadonnées éventuelles que nous n'exploiterons pas ici.
+
+La question à traiter est : **l'altitude et l'urbanisation affectent-elles la diversité des reptiles de la région Occitanie?**
+
+## Données
+
+### Données sur les communautés de reptiles
+
+Les données sont pré-formatées en une table sites x espèces. Nous avons choisi de définir une communauté de reptiles comme l'ensemble des reptiles observés sur une cellule d'une grille de maille régulière 10x10 km. Ce choix est arbitraire et constitue un compromis entre la dispersion des données sur le territoire et le grain spatial des gradients environnementaux que nous étudions. Il ne s'agit donc pas de communautés biologiques (structurées par un processus d'assemblage quelconque) mais d'assemblages spatiaux uniquement destinés à discrétiser les variations de diversité afin d'en faciliter la quantification. 
+
+```{r}
+msp=read.table("reptiles_sites_especes.txt",header=T,sep="\t")
+head(msp)
+```
+
+L'information numérique de cette table est un **nombre de données**. Il existe dans la base de données Malpolon un champ "nombre d'individus", mais la plupart des reptiles étant observés à l'unité, et les effectifs n'étant pas systématiquement notés par les observateurs, nous avons choisi de ne pas l'exploiter. Par conséquent, bien que la matrice ne soit pas binaire, elle traduit des **présences-absences**. Nous y reviendrons un peu plus loin. 
+
+### Données environnementales
+
+```{r}
+luse=read.table("reptiles_covariables_environnement.txt",header=T,sep="\t")
+summary(luse)
+```
+
+Pour chaque maille de la grille régulière utilisée pour définir les assemblages de reptiles, nous avons récupéré l'altitude médiane à partir d'un modèle numérique de terrain (résolution native de quelques mètres) et le % surfacique couvert par de l'urbanisation (classe 11 de la nomenclature CORINE).
+
+### Coordonnées géographiques
+
+```{r}
+grille=read.table("reptiles_grille.txt",header=T,sep="\t")
+summary(grille)
+```
+
+Nous disposons de l'aire totale de la grille et des coordonnées géographiques L93 du centroïde de chaque maille. Remarquez que certaines mailles ont une aire plus faible: ce sont les mailles tronquées aux marges de la région. 
+
+## Calcul de la diversité taxonomique
+
+### Choix des indices de diversité
+
+La diversité taxonomique est classiquement mesurée par trois types d'indices :  
+* la richesse spécifique, c'est à dire le nombre d'espèces par maille
+* un indice lié à l'abondance totale, c'est à dire le nombre d'individus, toutes espèces confondues
+* un indice de composition, classiquement l'indice de Shannon, l'équitabilité de Piélou ou l'indice de Simpson
+
+Ne disposant pas d'effectifs, nous ne pourrons pas travailler sur l'abondance totale. Seule la richesse spécifique nous est réellement accessible en première approche. 
+
+### Calcul de la richesse spécifique brute
+
+La librairie *vegan* nous permet de calculer facilement la richesse spécifique de chaque maille : 
+
+```{r}
+library(vegan)
+sr=specnumber(msp)
+hist(sr)
+```
+
+La richesse par maille varie de 0 à un peu plus de 15 espèces, avec un pic autour de 10 espèces. C'est assez classique pour une communauté de reptiles. On peut cartographier facilement cette variation : 
+
+```{r}
+sr.carte=merge(grille,sr,by.x="ID",by.y=0,all=F)
+plot(sr.carte$X_centro,sr.carte$Y_centro,cex=sr.carte$y/10)
+```
+
+On remarque une baisse nette de la diversité aux marges nord et sud de la région, c'est à dire dans les zones à relief (Pyrénées et Cévennes). On voit aussi des zones de plus faible diversité en littoral camarguais et à l'est de la région. 
+
+### L'effort d'échantillonnage
+
+Il nous est toutefois impossible de déterminer si ces variations sont liées à un réel patron écologique ou à l'effort d'échantillonnage. Nous pouvons approximer cet effort à partir du nombre de données générées par maille de la grille - c'est à dire l'information numérique contenue dans la matrice sites x espèces.
+
+```{r}
+effort.total=sum(msp)
+effort.total
+```
+
+Nous disposons en tout de 50371 observations. Elles sont néanmoins réparties de manière hétérogène : 
+
+```{r}
+hist(as.matrix(msp))
+```
+
+Cet histogramme nous montre que quelques cellules concentrent une très grande majorité de données. Cartographions cette variation : 
+
+```{r}
+effort=apply(msp,1,"sum")
+
+effort.carte=merge(grille,effort,by.x="ID",by.y=0,all=F)
+plot(effort.carte$X_centro,effort.carte$Y_centro,cex=effort.carte$y/1000)
+```
+
+On voit bien les quelques mailles qui concentrent la plupart des données - et qui pour cette raison écrasent les variations d'effort d'échantillonnage sur tout le reste de la région. Une log-transformation nous permettra d'y voir plus clair: 
+
+```{r}
+plot(effort.carte$X_centro,effort.carte$Y_centro,cex=log(effort.carte$y/100))
+```
+
+La richesse spécifique est assez logiquement liée à l'effort d'échantillonnage : plus on a prospecté une cellule de la grille, plus on a observé d'individus, plus on a d'espèces. C'est un processus de raréfaction assez classique : 
+
+```{r}
+plot(effort,sr)
+```
+
+### Homogénéiser l'effort d'échantillonnage
+
+Si nous voulons comparer la richesse spécifique d'une cellule à l'autre, il va falloir homogénéiser l'effort d'échantillonnage entre cellule. Nous allons pour cela **raréfier** la richesse, c'est à dire estimer la richesse à effort d'échantillonnage (nombre de données) constant d'une cellule à l'autre. La fonction *rarecurve* de vegan nous permet de tracer les courbes de raréfaction de chaque cellule: 
+
+```{r}
+crar=rarecurve(msp, label=F,xlab="Nombre de données",ylab="Richesse spécifique")
+```
+
+On voit bien que seules certaines mailles sont bien prospectées. Les courbes de raréfactions sont complètement écrasées par ces quelques sites : coupons-les à un nombre de données plus faible pour mieux discerner les points d'inflexion : 
+
+```{r}
+crar=rarecurve(msp,xlim=c(0,100), label=F,xlab="Nombre de données",ylab="Richesse spécifique")
+```
+
+On voit que l'essentiel des courbes de raréfaction atteignent leur point d'inflexion autour de 20 à 40 données : accumuler plus d'observations ne fait qu'ajouter quelques espèces rares.
+
+Avec cette information, nous pouvons décider du nombre de données auquel raréfier la richesse afin d'obtenir un effort homogène de cellule en cellule. Nous sommes face à un compromis : raréfier à un nombre d'observations élevé vs conserver beaucoup de cellules. Regardons quels seraient nos effectifs pour 20, 40, 60, 80 ou 100 données : 
+
+```{r}
+barplot(c(sum(effort>20),sum(effort>40),sum(effort>60),sum(effort>80),sum(effort>100)),names.arg=c(20,40,60,80,100),main="nombre de sites à xx données",ylab="nombre de sites")
+```
+
+Dans tous les cas, on reste à des nombre de cellules raisonnables. Etudions maintenant la couverture spatiale pour chacune de ces options : 
+
+```{r}
+effort.carte100=subset(effort.carte,y>=100)
+plot(effort.carte$X_centro,effort.carte$Y_centro,col="gray70")
+points(effort.carte100$X_centro,effort.carte100$Y_centro,pch=21,bg="darkred",col="darkred")
+```
+
+En raréfiant à 100 données, nous allons uniquement pouvoir garder des cellules de plaines - la plupart des cellules d'altitudes ayant moins de 100 données. Arrive-t-on malgré tout à conserver l'essentiel du gradient altitudinal avec les rares cellules de montagne qui restent?
+
+```{r}
+effort.cov=merge(effort.carte,luse,by="ID",all=F)
+hist(effort.cov$alti_median)
+effort.cov100=subset(effort.cov,y>=100)
+hist(effort.cov100$alti_median,add=T,col="gray80")
+
+hist(effort.cov$urbanisation_CORINE)
+hist(effort.cov100$urbanisation_CORINE,add=T,col="gray80") 
+```
+
+On tronque les plus hautes altitudes, mais on représente bien le gradient d'urbanisation. Voyons si on peut  mieux couvrir le gradient altitudinal avec une raréfaction à moins de données : 
+
+```{r}
+effort.carte50=subset(effort.carte,y>=50)
+plot(effort.carte$X_centro,effort.carte$Y_centro,col="gray70")
+points(effort.carte50$X_centro,effort.carte50$Y_centro,pch=21,bg="darkred",col="darkred")
+
+hist(effort.cov$alti_median)
+effort.cov50=subset(effort.cov,y>=50)
+hist(effort.cov50$alti_median,add=T,col="gray80")
+
+hist(effort.cov$urbanisation_CORINE)
+hist(effort.cov50$urbanisation_CORINE,add=T,col="gray80") 
+```
+
+A 50 données par maille, la représentation des deux gradients est nettement meilleure et la couverture spatiale de la région s'est bien améliorée. Vous pouvez tester d'autres efforts (20, 30, 40, 70...) afin d'affiner ce choix. Pour la suite, nous considérerons que 50 données par maille représente un bon compromis. 
+
+### Richesse raréfiée à 50 données
+
+Nous allons donc raréfier la richesse à 50 données pour chaque cellule, c'est à dire que nous allons prédire la richesse spécifique à un effort de 50 données à partir des courbes de raréfactions établies plus haut : 
+
+```{r}
+crar=rarecurve(msp,xlim=c(0,100), label=F,xlab="Nombre de données",ylab="Richesse spécifique")
+abline(v=50,lty="dashed",col="blue")
+```
+
+On voit bien que la plupart des courbes se stabilisent effectivement vers 50 données. Prédisons la richesse de chaque maille à partir de ces courbes:
+
+```{r}
+msp50=msp[which(apply(msp,1,"sum")>=50),]
+sr50=rarefy(msp50,sample=50)
+```
+
+On peut comparer la richesse raréfiée à la richesse brute : 
+
+```{r}
+sr.brute=specnumber(msp50)
+plot(sr.brute,sr50)
+```
+
+Il y a une corrélation positive qui tend à disparaître au grandes richesses brutes : c'est complètement attendu. Remarquez que les richesses raréfiées ne nous intéressent qu'à visée comparative. 
+
+```{r}
+effort.carte50$richesse.rarefiee=sr50
+
+plot(effort.carte50$y,sr50,main="richesse raréfiée à 50 points vs nombre de points initial")
+```
+
+La raréfaction a eu l'effet attendu : décorréler l'effort d'échantillonnage et la richesse spécifique. Nous pouvons donc considérer que les richesses sont désormais comparables entre cellules. 
+
+## Effets des variables environnementales sur la richesse spécifique
+
+```{r}
+data.50=merge(effort.cov50[,c("ID","X_centro","Y_centro","alti_median","urbanisation_CORINE")],sr50,by.x="ID",by.y=0,all=F)
+colnames(data.50)[ncol(data.50)]="richesse.rarefiee"
+par(mfrow=c(1,2))
+plot(data.50$alti_median,data.50$richesse.rarefiee)
+plot(data.50$urbanisation_CORINE,data.50$richesse.rarefiee)
+```
+
+On ne voit rien d'évident dans ces représentations graphiques : un modèle devrait nous permettre d'y voir plus clair. 
+
+### Modèle sur la richesse brute
+
+A toute fin utile, nous allons malgré tout tester l'effet des covariables d'intérêt (altitude et urbanisation) sur la richesse spécifique brute (non raréfiée) - cela nous permettra de voir à quel point les hétérogénéités d'échantillonnage influent sur notre résultat. 
+
+```{r}
+data.50b=merge(data.50,sr,by.x="ID",by.y=0,all=F)
+colnames(data.50b)[ncol(data.50b)]="richesse.brute"
+```
+
+Le modèle le plus adapté pour modéliser la richesse spécifique serait un GLM de Poisson, mais comme la richesse raréfiée, que nous exploiterons dans un instant, est une prédiction continue, nous allons préférer partir directement sur un modèle linéaire dans lequel la richesse est log-transformée.
+
+```{r}
+mod.brut=lm(log(richesse.brute+1)~alti_median+urbanisation_CORINE,data=data.50b)
+par(mfrow=c(2,2))
+plot(mod.brut)
+summary(mod.brut)
+```
+
+Ce premier modèle suggère un effet négatif de l'altitude, mais pas d'effet de l'urbanisation. C'est loin d'être illogique, mais comme nous ne tenons pas compte des hétérogénéités d'échantillonnage, nous ne pouvons pas nous fier à ce résultat. Nous allons donc répliquer ce modèle sur les richesses raréfiées : 
+
+### Modèle sur la richesse raréfiée
+
+
+```{r}
+mod.rar=lm(log(richesse.rarefiee+1)~alti_median+urbanisation_CORINE,data=data.50b)
+par(mfrow=c(2,2))
+plot(mod.rar)
+summary(mod.rar)
+```
+
+Cette fois, l'altitude a toujours un effet négatif, mais la richesse a elle-aussi un effet assez fortement négatif. On voit bien en comparant ces deux premiers modèles l'impact de l'effort d'échantillonnage sur nos résultats.
+
+### Contrôler les artefacts spatiaux
+
+Dans une étude spatiale comme celle-ci, il arrive fréquemment que les résidus d'un modèle de régression soient autocorrélés dans l'espace (deux résidus voisins se ressemblent plus qu'attendu par hasard). Comme ce patron viole la condition d'indépendance des résidus, qui est critique dans un modèle linéaire, il y a lieu de s'en inquiéter. Nous allons commencer par vérifier s'il existe ou non une autocorrélation spatiale dans les résidus de notre modèle. Nous allons y parvenir simplement en cartographiant les résidus du modèle ; il existe d'autres méthodes (corrélogramme, variogramme), mais nous ne nous étendrons pas dessus. 
+
+```{r}
+plot(data.50b$X_centro,data.50b$Y_centro,cex=residuals(mod.rar)*10)
+```
+
+On voit effectivement se dessiner des zones à forts résidus et des zones à faibles résidus, signant une autocorrélation spatiale. Afin de la corriger simplement, nous allons ajouter une fonction de lissage basée sur les coordonnées géographiques des mailles dans notre modèle (il y a d'autres méthodes, mais ce n'est pas le sujet ici):
+
+```{r}
+library(mgcv)
+mod.sp.rar=gam(log(richesse.rarefiee+1)~alti_median+urbanisation_CORINE+s(X_centro,Y_centro),data=data.50b)
+```
+
+On vérifie que ce modèle traite bien l'autocorrélation spatiale : 
+
+```{r}
+plot(data.50b$X_centro,data.50b$Y_centro,cex=residuals(mod.sp.rar)*10)
+```
+
+Les résidus ont l'air désormais indépendants dans l'espace : nous pouvons donc interpréter ce modèle en toute confiance. 
+
+```{r}
+summary(mod.sp.rar)
+```
+
+La fonction de lissage spatial ne nous intéresse pas particulièrement, elle est juste là pour contrôler l'autocorrélation spatiale mais on ne cherche pas à en tirer une interprétation biologique. En revanche, on voit que **l'effet de l'altitude a disparu** alors que l'effet de l'urbanisation persiste. 
+
+## Travail sur l'indice de Shannon
+
+S'il n'est pas possible de travailler sur l'abondance totale, faute de données d'effectifs, on peut tout de même obtenir un indice de Shannon. Comme la richesse, l'indice de Shannon est affecté par la pression d'échantillonnage. Nous allons donc égaliser l'effort d'échantillonnage de toutes les cellules en tirant aléatoirement 50 données (c'est à dire 50 reptiles individuels) dans chaque maille de la grille. Nous répèterons ce tirage 10 fois afin que nos résultats ne dépendent pas d'une unique réalisation du tirage aléatoire : 
+
+```{r}
+k=10
+d=50
+rarlist=replicate(rrarefy(msp50,sample=d),n=k,simplify=F)
+```
+
+Nous pouvons ensuite calculer, pour chaque maille, 10 indices de Shannon (1 par tirage): nous allons ensuite les moyenner par maille et les corréler à l'indice de Shannon observé: 
+
+```{r}
+library(plyr)
+rarH=ldply(rarlist,.fun=diversity)
+rarHm=apply(rarH,2,"mean")
+rarHs=apply(rarH,2,"sd")
+
+# shannon sur matrice observée
+obsH=diversity(msp50)
+
+plot(obsH,rarHm)
+abline(0,1,col="red")
+```
+
+Cette manière de procéder fait néanmoins une hypothèse importante : que la distribution des observations est proportionnelle à la distribution des effectifs entre espèces- autrement dit, qu'une espèce n'est pas sur-représentée uniquement parce que les observateurs se concentrent particulièrement dessus. Cela pourrait être le cas si, par exemple, un observateur a décidé de rechercher ou de ne renvoyer que les données concernant une espèce particulière de reptile. Cette hypothèse est assez forte dans la mesure où l'on sait pertinemment que le nombre de données portant sur une espèce dans une base de données opportuniste est bien plus lié à sa détectabilité et à l'intérêt que les observateurs lui portent, qu'à son abondance réelle. Ainsi, l'indice de Shannon mesuré risque de représenter les hétérogénéités de détection des espèces que les relations d'abondance-dominance. Nous n'avons cependant, avec les présentes données, aucun moyen de contrôler ce biais et c'est pour cette raison que nous n'irons pas plus loin dans l'analyse de cet indice.
+
+
+## Conclusion
+
+La richesse spécifique en reptile décroit en zone urbanisées. L'effet apparent de l'altitude, visible dans les données brutes comme dans les données raréfiées, s'explique par des gradients spatiaux non pris en compte dans l'étude - il n'y a donc apparemment pas d'effet de l'altitude per-se. Il se pourrait très bien que l'échantillonnage assez faible (peu de mailles) en très hautes altitudes ne masque partiellement une baisse de richesse en bout de gradient, mais ce n'est pas testable avec nos données. On peut donc en conclure que pour l'essentiel de la région, il y a un effet de l'urbanisation, pas d'effet de l'altitude, et des structures spatiales fortes.
+
