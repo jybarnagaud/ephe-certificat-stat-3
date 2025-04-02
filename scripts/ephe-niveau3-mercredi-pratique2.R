@@ -4,8 +4,6 @@
 # modèles de processus ponctuels appliqués à l'écologie
 #---------------------------------------------------#
 
-setwd("C:/Users/jeany/OneDrive/Documents/EPHE_enseignement/Statistiques/2024/niveau3/supports/donnees")
-
 library(sf)
 library(spatstat)
 library(terra)
@@ -19,10 +17,10 @@ library(raster)
 #--------------------------#
 
 # données opportunistes de Timon lepidus (Lézard ocellé) - coordonnées Lambert 93
-rept=read.csv2("lezard_ocelle_occitanie.csv", dec = ".")
+rept=read.csv2("donnees/lezard_ocelle_occitanie.csv", dec = ".")
 
 # emprise de l'analyse (= région Occitanie)
-emprise=read_sf(dsn="ppm_reptiles_occitanie_emprise.shp")
+emprise=read_sf(dsn="donnees/ppm_reptiles_occitanie_emprise.shp")
 
 #creation de la fenêtre d'analyse
 emprise.sp <- as_Spatial(emprise)
@@ -83,23 +81,25 @@ as.im.SpatRaster1 <- function(X) {
 }
 
 
-urb=raster("urbain_1000.tif")
+urb=raster("donnees/urbain_1000.tif")
 urb = rast(urb)
 urb=as.im.SpatRaster1(urb)
-urb=(urb-mean(urb))/sd(urb) # le centrage réduction n'est pas impératif mais ici, on veut comparer les effets des différentes variables
+urb$v = (urb$v - mean(urb$v,na.rm=T))/sd(urb$v,na.rm=T)
+#urb = (urb - mean(urb))/sd(urb)
 
-
-temp=raster("temperature_moyenne.tif")
+temp=raster("donnees/temperature_moyenne.tif")
 temp = rast(temp)
 temp= as.im.SpatRaster1(temp)
-temp=(temp-mean(temp))/sd(temp)
+temp$v = (temp$v - mean(temp$v,na.rm= T))/sd(temp$v,na.rm= T)
+#temp = (temp - mean(temp))/sd(temp)
+
 
 #------------#
 ### modèle ###
 #------------#
 
 # le modèle
-mod.rept0=ppm(rept.ppp,~urb+temp, eps=50)
+mod.rept0=ppm(rept.ppp,~urb+temp, eps=50,na.rm=T)
 
 # résidus par espèce
 resid.sp=residuals(mod.rept0)
@@ -114,11 +114,11 @@ diagnose.ppm(mod.rept0)
 
 # inférence
 summary(mod.rept0$internal$glmfit)
-res.temp=parres(mod.rept0,covariate="temp")
-plot(res.temp) # attention à l'interprétation des smoothers, tendance au surlissage
+res.temp0=parres(mod.rept0,covariate="temp")
+plot(res.temp0) # attention à l'interprétation des smoothers, tendance au surlissage
 
-res.urb=parres(mod.rept0,covariate="urb")
-plot(res.urb) 
+res.urb0=parres(mod.rept0,covariate="urb")
+plot(res.urb0) 
 
 #---------------------------------------------------------#
 ### estimation de l'autocorrélation spatiale résiduelle ###
@@ -168,7 +168,9 @@ summary(mod.rept$internal$glmfit)
 # résidus partiels
 res.temp=parres(mod.rept,covariate="temp")
 res.urb=parres(mod.rept,covariate="urb")
-par(mfrow=c(1,2))
+par(mfrow=c(2,2))
+plot(res.temp0)
+plot(res.urb0)
 plot(res.temp)
 plot(res.urb)
 
@@ -226,29 +228,35 @@ qmplot(lon, lat, data = rept3) # on voit très bien l'alignement des points sur 
 # et un certain nombre d'autres axes routiers
 
 # nombre de dates uniques de saisie de données
-date=raster("biais_date_250.tif")
+date=raster("donnees/biais_date_250.tif")
 date=rast(date)
 date = as.im.SpatRaster1(date) 
-date=(date-mean(date))/sd(date) 
+date$v=(date$v-mean(date$v,na.rm=T))/sd(date$v,na.rm=T) 
 plot(date)
 
 # nombre de données générées par des bureaux d'études
-be=raster("biais_bureau_250.tif")
+be=raster("donnees/biais_bureau_250.tif")
 be<-rast(be)
 be <- as.im.SpatRaster1(be)
-be=(be-mean(be))/sd(be)
+be$v=(be$v-mean(be$v,na.rm=T))/sd(be$v,na.rm=T)
 plot(be) # variable écrasée par quelques grosses concentrations de données
 
 # éléments linéaires (routes et voies ferrées)
-elim=raster("lineaire_1000.tif")
+elim=raster("donnees/lineaire_1000.tif")
 elim <- rast(elim)
 elim=as.im.SpatRaster1(elim)
-lineaire_1000=(elim-mean(elim))/sd(elim)
-plot(lineaire_1000)
+elim$v=(elim$v-mean(elim$v,na.rm=T))/sd(elim$v,na.rm=T)
+plot(elim)
 
 # on refait le modèle avec ces nouvelles variables (! pour bien faire il faudrait aussi réestimer le terme d'interaction spatial)
 t1=Sys.time()
-mod.rept.ech=ppm(rept.ppp,~urb+temp+date+be+lineaire_1000, interaction = Geyer(r=1001,sat=7), eps=50)
+mod.rept.ech=ppm(rept.ppp,~urb+temp+date+be+elim, interaction = Geyer(r=1001,sat=7), eps=50)
+t2=Sys.time()
+t2-t1 
+
+# le même sans le terme spatial
+t1=Sys.time()
+mod.rept.ech.nogeyer=ppm(rept.ppp,~urb+temp+date+be+elim, , eps=50)
 t2=Sys.time()
 t2-t1 
 
@@ -259,16 +267,21 @@ plot(Smooth(resid.sp.ech)) # les variables d'échantillonnage n'ont pas un gros 
 
 # inférence
 summary(mod.rept)
-summary(mod.rept.ech) # on a  réaugmenté l'impact des zones urbaines, malgré l'autocorrélation
-
+summary(mod.rept.ech) # sans surprise au regard de ce qu'on a obtenu ci dessus, il y a peu de changement avec / sans correction
+summary(mod.rept.ech.nogeyer) # par contre l'effet de l'urbanisation est beaucoup plus faible quand on prend en compte l'autocorrélation spatiale. 
 res.temp.ech=parres(mod.rept.ech,covariate="temp")
 res.urb.ech=parres(mod.rept.ech,covariate="urb")
 
-par(mfrow=c(2,2))
+res.temp.ech.nogeyer=parres(mod.rept.ech.nogeyer,covariate="temp")
+res.urb.ech.nogeyer=parres(mod.rept.ech.nogeyer,covariate="urb")
+
+par(mfrow=c(3,2))
 plot(res.temp,main="température, sans correction",ylim=c(-4,2))
 plot(res.urb,main="urbanisation, sans correction",ylim=c(-4,2))
 plot(res.temp.ech,main="température, avec correction",ylim=c(-4,2))
 plot(res.urb.ech,main="urbanisation, avec correction",ylim=c(-4,2))
+plot(res.temp.ech.nogeyer,main="température, avec correction, sans spatial",ylim=c(-4,2))
+plot(res.urb.ech.nogeyer,main="urbanisation, avec correction, sans spatial",ylim=c(-4,2))
 
 #-----------------------------------------------------#
 ### prédictions à effort d'échantillonnage constant ###
@@ -291,7 +304,6 @@ plot(mod.rept.effequal.pred, col=h, equal.ribbon=T,main="")
 # pour rappel, la même prédiction pour le modèle sans effort d'échantillonnage
 mod.rept.pred=predict(mod.rept)
 h=colorRampPalette(rev(brewer.pal(10 , "RdYlBu")))  
-x11()
 plot(mod.rept.pred, col=h, equal.ribbon=T,main="") # les deux prédictions se ressemblent beaucoup, mais il y a des différences locales
 
 #------------------------------------------------------------------#
@@ -339,7 +351,7 @@ plot(mod.rept.effdate.pred, col=h)
 #--------------------------#
 
 # données d'occurrences toutes espèces
-dat.multsp=read.csv2("occurrences_reptiles_occitanie.csv",  dec=".", header=T, fill=T, stringsAsFactors =T)
+dat.multsp=read.csv2("donnees/occurrences_reptiles_occitanie.csv",  dec=".", header=T, fill=T, stringsAsFactors =T)
 
 # nombreuses espèces avec des effectifs variables (on a supprimé quelques espèces jugées trop rares)
 summary(dat.multsp$species)
@@ -355,7 +367,7 @@ ppm.multsp=ppm(pp.multsp,~marks*urb+
                           marks*temp+
                         date+
                           be+
-                          marks*lineaire_1000,
+                          marks*elim,
                               interaction = Geyer(r=980,sat=48), eps=50)
 t2=Sys.time()
 
