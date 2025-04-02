@@ -2,13 +2,12 @@
 title: "TP Indices de diversité - master Rainet"
 author: "Jean-Yves Barnagaud (jean-yves.barnagaud@ephe.psl.eu)"
 date: "20 janvier 2022"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = 'C:/Users/JYB/Documents/TP reptiles')
-
+knitr::opts_knit$set(root.dir = 'C:/Users/jeany/OneDrive/Documents/ephe-certificat-stat-3')
 ```
 
 ## Objectifs
@@ -28,7 +27,7 @@ La question à traiter est : **l'altitude et l'urbanisation affectent-elles la d
 Les données sont pré-formatées en une table sites x espèces. Nous avons choisi de définir une communauté de reptiles comme l'ensemble des reptiles observés sur une cellule d'une grille de maille régulière 10x10 km. Ce choix est arbitraire et constitue un compromis entre la dispersion des données sur le territoire et le grain spatial des gradients environnementaux que nous étudions. Il ne s'agit donc pas de communautés biologiques (structurées par un processus d'assemblage quelconque) mais d'assemblages spatiaux uniquement destinés à discrétiser les variations de diversité afin d'en faciliter la quantification. 
 
 ```{r}
-msp=read.table("reptiles_sites_especes.txt",header=T,sep="\t")
+msp=read.table("donnees/reptiles_sites_especes.txt",header=T,sep="\t")
 head(msp)
 ```
 
@@ -37,7 +36,7 @@ L'information numérique de cette table est un **nombre de données**. Il existe
 ### Données environnementales
 
 ```{r}
-luse=read.table("reptiles_covariables_environnement.txt",header=T,sep="\t")
+luse=read.table("donnees/reptiles_covariables_environnement.txt",header=T,sep="\t")
 summary(luse)
 ```
 
@@ -46,7 +45,7 @@ Pour chaque maille de la grille régulière utilisée pour définir les assembla
 ### Coordonnées géographiques
 
 ```{r}
-grille=read.table("reptiles_grille.txt",header=T,sep="\t")
+grille=read.table("donnees/reptiles_grille.txt",header=T,sep="\t")
 summary(grille)
 ```
 
