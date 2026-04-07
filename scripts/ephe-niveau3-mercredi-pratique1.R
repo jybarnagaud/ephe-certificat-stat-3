@@ -1,9 +1,7 @@
 #-------------------------------------------------#
 #### EPHE : Analyse de données - niveau avancé ####
-# modèle sur données spatiales - version "facile"#
+# modèle sur données spatiales  #
 #-------------------------------------------------#
-
-setwd("F:/certificat_2023/niveau3/supports/donnees_final")
 
 library(ggplot2)
 library(mapview)
@@ -23,7 +21,7 @@ library(spdep) # une solution parmi d'autres pour les corrélogrammes spatiaux
 #### données ####
 #---------------#
 
-chevreuils3 = read.csv2("OFB_chevreuils2017.csv",row.names=1)
+chevreuils3 = read.csv2("donnees/chevreuils_alpes.csv",row.names=1)
 
 #-------------------#
 #### exploration ####
