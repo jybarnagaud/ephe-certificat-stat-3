@@ -1,22 +1,26 @@
 ---
-title: "TP Indices de diversité - master Rainet"
+title: "données opportunistes et indices de diversité"
 author: "Jean-Yves Barnagaud (jean-yves.barnagaud@ephe.psl.eu)"
-date: "20 janvier 2022"
+date: "08 avril 2026"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = 'C:/Users/jeany/OneDrive/Documents/ephe-certificat-stat-3')
+knitr::opts_knit$set(root.dir = 'D:/EPHE_enseignement/Statistiques/certificat/2026/supports/ephe-certificat-stat-3/donnees')
 ```
 
 ## Objectifs
 
+Les indicateurs de diversité des communautés biotiques font partie de la boite à outils classique des experts du suivi de la biodiversité. Nous allons les exploiter pour développer une analyse en autonomie. Le but n'est pas d'aborder la question des indicateurs eux-mêmes, qui nécessiterait une séquence complète, mais de s'entrainer à développer une stratégie d'analyse dans le cadre d'un travail en groupe tel qu'on peut le faire dans un séminaire de recherche ou un groupe de travail. 
+
 Ce cas d'étude permet d'aborder deux questions distinctes :  
 * la problématique d'un effort d'échantillonnage hétérogène
-* l'analyse des relations entre diversité des communautés et environnement  
+* l'analyse des relations entre indicateurs de diversité des communautés et environnement  
 
-Nous nous basons pour cela sur un jeu de données portant sur les reptiles de la région Occitanie, acquis au début des années 2010 sur un créneau de 5 ans (P Geniez & M Cheylan, CEFE-EPHE, base de données Malpolon). Les données sont des observations opportunistes rapportées par des observateurs amateurs ou professionnels et bancarisées après validation. Toute donnée est constituée d'une espèce, d'un jeu de coordonnées géographiques et d'une date, plus des métadonnées éventuelles que nous n'exploiterons pas ici.
+Nous nous basons pour cela sur un jeu de données portant sur les reptiles de la région Occitanie, acquis au début des années 2010  (P Geniez & M Cheylan, CEFE-EPHE, base de données Malpolon). Les données sont des observations opportunistes rapportées par des observateurs amateurs ou professionnels et bancarisées après validation. Toute donnée est constituée d'une espèce, d'un jeu de coordonnées géographiques et d'une date, plus des métadonnées éventuelles que nous n'exploiterons pas ici.
+
+L'article d'origine est consultable à : doi:10.1111/ddi.13176 . Nous vous conseillons néanmoins de ne pas le consulter et de ne pas consulter les scripts en amont et en cours d'exercice, le but étant justement de vous entrainer à identifier vous-mêmes  les enjeux et les solutions. A noter que le script R (ephe-niveau3-jeudi-matin.R) et ce Markdown sont légèrement différents sur la forme mais les analyses implémentées sont les mêmes. 
 
 La question à traiter est : **l'altitude et l'urbanisation affectent-elles la diversité des reptiles de la région Occitanie?**
 
@@ -27,7 +31,7 @@ La question à traiter est : **l'altitude et l'urbanisation affectent-elles la d
 Les données sont pré-formatées en une table sites x espèces. Nous avons choisi de définir une communauté de reptiles comme l'ensemble des reptiles observés sur une cellule d'une grille de maille régulière 10x10 km. Ce choix est arbitraire et constitue un compromis entre la dispersion des données sur le territoire et le grain spatial des gradients environnementaux que nous étudions. Il ne s'agit donc pas de communautés biologiques (structurées par un processus d'assemblage quelconque) mais d'assemblages spatiaux uniquement destinés à discrétiser les variations de diversité afin d'en faciliter la quantification. 
 
 ```{r}
-msp=read.table("donnees/reptiles_sites_especes.txt",header=T,sep="\t")
+msp=read.table("reptiles_sites_especes.txt",header=T,sep="\t")
 head(msp)
 ```
 
@@ -36,7 +40,7 @@ L'information numérique de cette table est un **nombre de données**. Il existe
 ### Données environnementales
 
 ```{r}
-luse=read.table("donnees/reptiles_covariables_environnement.txt",header=T,sep="\t")
+luse=read.table("reptiles_covariables_environnement.txt",header=T,sep="\t")
 summary(luse)
 ```
 
@@ -45,7 +49,7 @@ Pour chaque maille de la grille régulière utilisée pour définir les assembla
 ### Coordonnées géographiques
 
 ```{r}
-grille=read.table("donnees/reptiles_grille.txt",header=T,sep="\t")
+grille=read.table("reptiles_grille.txt",header=T,sep="\t")
 summary(grille)
 ```
 
@@ -174,7 +178,7 @@ hist(effort.cov$urbanisation_CORINE)
 hist(effort.cov50$urbanisation_CORINE,add=T,col="gray80") 
 ```
 
-A 50 données par maille, la représentation des deux gradients est nettement meilleure et la couverture spatiale de la région s'est bien améliorée. Vous pouvez tester d'autres efforts (20, 30, 40, 70...) afin d'affiner ce choix. Pour la suite, nous considérerons que 50 données par maille représente un bon compromis. 
+A 50 données par maille, la représentation des deux gradients est nettement meilleure et la couverture spatiale de la région s'est bien améliorée. Vous pouvez tester d'autres efforts (20, 30, 40, 70...) afin d'affiner ce choix. Pour la suite, nous considérerons que 50 données par maille représente un bon compromis. Ce n'est peut être pas le choix que nous ferions en définitive pour l'analyse réelle, qui nécessiterait des investigations complémentaires. On ne construit pas un article scientifique en une demi journée! Mais cela vous donne une idée de la logique que nous avons adoptée.
 
 ### Richesse raréfiée à 50 données
 
