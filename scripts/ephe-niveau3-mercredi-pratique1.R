@@ -1,7 +1,14 @@
-#-------------------------------------------------#
-#### EPHE : Analyse de données - niveau avancé ####
-# modèle sur données spatiales  #
-#-------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Certificat en analyse de données - niveau perfectionnement
+# séquence: données de distributions spatiales
+# auteur : Jean-Yves Barnagaud (jean-yves.barnagaud@ephe.psl.eu)
+# révisé : 04/2026
+
+# objectif de la séquence : explorer des données spatiales, en proposer une analyse
+# simple en réponse à une question, identifier les enjeux inhérents à la répartition
+# spatiale et en proposer un traitement
+
+#------------------------------------------------------------------------------#
 
 library(ggplot2)
 library(mapview)
@@ -17,15 +24,13 @@ library(spdep) # une solution parmi d'autres pour les corrélogrammes spatiaux
 
 # voir la vignette mgcViz : https://cran.r-project.org/web/packages/mgcViz/vignettes/mgcviz.html
 
-#---------------#
-#### données ####
-#---------------#
+## données ---------------------------------------------------------------------
+
 
 chevreuils3 = read.csv2("donnees/chevreuils_alpes.csv",row.names=1)
 
-#-------------------#
-#### exploration ####
-#-------------------#
+
+## exploration -----------------------------------------------------------------
 
 # répartition des données entre massifs
 summary(chevreuils3)
@@ -90,9 +95,7 @@ chart.Correlation(chevreuils3[,c("Tirs","lfrequentation","Densite_lin","Altitude
 
 # on pourra se préoccuper de la relation fréquentation - densité de chemins, mais a priori on peut séparer les effets
 
-#-----------------#
-#### le modèle ####
-#-----------------#
+## le modèle -------------------------------------------------------------------
 
 # on commence simple
 m1= glm(Abroutissement~Densite_lin + lfrequentation + Altitude + Pente + Tirs + Nom,family=binomial,data=chevreuils3)
@@ -141,7 +144,9 @@ xy.chev = chevreuils3[,c("X","Y")]
 dist.chevreuil = dnearneigh(xy.chev,d1=0,d2=2500,longlat=F) # qui est voisin de qui (d2 définit une distance max. à laquelle deux points peuvent être voisins)
 plot(dist.chevreuil,coords=xy.chev)
 
-cg.chev = sp.correlogram(dist.chevreuil,var = chevreuils3$resid.gam,method="I",order=8,zero.policy=T)
+# ligne bloquée, > 10-20 min de calcul. A ne faire tourner que si vous avez le temps
+
+# cg.chev = sp.correlogram(dist.chevreuil,var = chevreuils3$resid.gam,method="I",order=8,zero.policy=T)
 plot(cg.chev) # il y a un léger patron d'autocorrélation spatiale résiduelle
 
 # on tente de corriger un peu la variabilité spatiale

@@ -1,0 +1,49 @@
+acronyme;nom_sci;nom_angl;statut_NZ;motif_intro;biome_origine
+BCT;Chlidonias albostriatus;Black-fronted Tern;Endemic;NATIF;NZ
+BEL;Anthornis melanura;Bellbird;Endemic;NATIF;NZ
+BLA;Turdus merula;Blackbird;Introduced;CHANT;EU
+BRO;Mohoua novaeseelandiae;Brown Creeper;Endemic;NATIF;NZ
+CAN;Branta canadensis;Canada Goose;Introduced;AUTRE;USA
+CHA;Fringilla coelebs;Chaffinch;Introduced;ORNEMENT;EU
+DOT;Charadrius bicinctus;Banded Dotterel;Endemic;NATIF;NZ
+DUN;Prunella modularis;Dunnock;Introduced;CHANT;EU
+FAL;Falco novaeseelandiae;New-Zealand Falcon;Endemic;NATIF;NZ
+FAN;Rhipidura fuliginosa;Fantail;Endemic;NATIF;NZ
+GOL;Carduelis carduelis;Goldfinch;Introduced;ORNEMENT;EU
+GRE;Carduelis chloris;Greenfinch;Introduced;ORNEMENT;EU
+GRW;Gerygone igata;Grey Warbler;Endemic;NATIF;NZ
+GUL;Larus dominicanus;Southern Black-backed Gull;Native;NATIF;NZ
+HAR;Circus approximans;Australasian Harrier;Native;NATIF;NZ
+HOU;Passer domesticus;House Sparrow;Introduced;CHANT;EU
+KAK;Nestor meridionalis;Kaka;Endemic;NATIF;NZ
+KEA;Nestor notabilis;Kea;Endemic;NATIF;NZ
+KIN;Todiramphus sanctus;New-Zealand Kingfisher;Native;NATIF;NZ
+LGO;Athene noctua;Little German Owl;Introduced;AUTRE;EU
+LON;Urodynamis taitensis;Long-tailed Cuckoo;Endemic;NATIF;NZ
+MAG;Gymnorhina tibicen;Australian Magpie;Introduced;AUTRE;AUS
+MAL;Anas platyrhynchos;Mallard;Introduced;AUTRE;EU
+MOR;Ninox novaeseelandiae;Morepork;Native;NATIF;NZ
+OYS;Haematopus finschi;South-Island Oystercatcher;Native;NATIF;NZ
+PHE;Phasianus colchicus;Pheasant;Introduced;AUTRE;EU
+PIG;Hemiphaga novaeseelandiae;New-Zealand Pigeon;Endemic;NATIF;NZ
+PIP;Anthus novaeseelandiae;New-Zealand Pipit;Endemic;NATIF;NZ
+PLO;Vanellus spinosus;Spur-winged Plover;Native;NATIF;NZ
+PUK;Porphyrio melanotus;Pukeko;Native;NATIF;NZ
+QUA;Callipepla californica;California Quail;Introduced;AUTRE;USA
+RCP;Cyanoramphus novaezelandiae;Red-crowned Parakeet;Native;NATIF;NZ
+RED;Acanthis flammea;Redpoll;Introduced;ORNEMENT;EU
+RIF;Acanthisitta chloris;Rifleman;Endemic;NATIF;NZ
+ROB;Petroica australis;New-Zealand Robin;Endemic;NATIF;NZ
+ROC;Columba livia;Rock Pigeon;Introduced;AUTRE;EU
+SHE;Tadorna variegata;Paradise Shelduck;Endemic;NATIF;NZ
+SHI;Chrysococcyx lucidus;Shining Cuckoo;Native;NATIF;NZ
+SIL;Zosterops lateralis;Silvereye;Native;NATIF;NZ
+SKY;Alauda arvensis;Skylark;Introduced;CHANT;EU
+SON;Turdus philomelos;Song Thrush;Introduced;CHANT;EU
+STA;Sturnus vulgaris;Starling;Introduced;AUTRE;EU
+SUL;Cacatua galerita;Sulphur-crested Cockatoo;Introduced;ORNEMENT;AUS
+SWA;Hirundo neoxena;Welcome Swallow;Native;NATIF;NZ
+TOM;Petroica macrocephala;New-Zealand Tomtit;Endemic;NATIF;NZ
+WFH;Egretta novaehollandiae;White-faced Heron;Native;NATIF;NZ
+YCP;Cyanoramphus auriceps;Yellow-crowned Parakeet;Endemic;NATIF;NZ
+YEL;Emberiza citrinella;Yellowhammer;Introduced;ORNEMENT;EU
