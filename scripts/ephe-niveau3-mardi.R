@@ -1,3 +1,13 @@
+#------------------------------------------------------------------------------#
+# Certificat en analyse de données - niveau perfectionnement
+# séquence: inférence bayésienne
+# auteur : Jean-Yves Barnagaud (jean-yves.barnagaud@ephe.psl.eu)
+# révisé : 04/2026
+
+# réplication des analyses de la séquence de cours
+#------------------------------------------------------------------------------#
+
+
 ## installer les packages nécessaires ------------------------------------------
 
 # install.packages("V8", dependencies = TRUE)
@@ -40,10 +50,6 @@ ggplot(post)+
 
 
 ## données ---------------------------------------------------------------------
-
-setwd(
-  "D:/EPHE_enseignement/Statistiques/certificat/2026/ephe-certificat-stat-3-main/ephe-certificat-stat-3-main/2_mardi"
-)
 
 herb <- read.csv2("donnees/Diversite_vegetale_placette.csv", header = T)
 herb07 <- subset(herb, Annee == 2007)
