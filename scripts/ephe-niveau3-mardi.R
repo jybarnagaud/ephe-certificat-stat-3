@@ -56,6 +56,14 @@ herb07 <- subset(herb, Annee == 2007)
 fagus07 <- subset(herb07, Nom_Latin == "Fagus sylvatica" &
                     Presence == 1)
 
+# centrage-réduction du prédicteur (facultatif mais conseillé pour les modèles
+# complexes ou pour comparer entre différents algorithmes. Si vous voulez vérifier
+# la cohérence entre les résultats de STAN et JAGS dans le script ci-dessous, 
+# privilégiez la variable centrée réduite. Si vous voulez des résultats interprétables
+# sur l'échelle naturelle, la variable brute suffit). 
+
+fagus07$sdivspe <- as.vector(scale(fagus07$Div_spe_veg))
+
 ## exploration -----------------------------------------------------------------
 
 ggplot(fagus07) +
@@ -67,7 +75,7 @@ ggplot(fagus07) +
 
 ## modèle fréquentiste ---------------------------------------------------------
 
-frq.fagus07 <- glm(Consommation ~ Div_spe_veg, family = "binomial", data = fagus07)
+frq.fagus07 <- glm(Consommation ~ sdivspe, family = "binomial", data = fagus07)
 summary(frq.fagus07)
 
 ## modèle bayésien : choix des priors ------------------------------------------
@@ -95,7 +103,7 @@ hist(logit.prior3, main = "N(0,2)")
 
 brms.fagus07 <- brm(
   Consommation |
-    trials(1) ~ 1 + Div_spe_veg,
+    trials(1) ~ 1 + sdivspe,
   family = "binomial",
   data = fagus07,
   prior = c(prior(normal(0, 2), class = Intercept), prior(normal(0, 2), class = b)),
@@ -109,6 +117,7 @@ brms.fagus07 <- brm(
 summary(brms.fagus07)
 plot(brms.fagus07)
 
+# autre solution, équivalente (supposément plus efficace, peu sensible ici)
 
 brms.fagus07.2 <- brm(
   Consommation  ~ 1 + Div_spe_veg,
@@ -139,7 +148,9 @@ dat.jags <- list(
 
 param <- c("alpha","beta")
 
-# script du modèle
+# script du modèle (attention au codage des priors : sous JAGS, la loi normale
+# est exprimée en moyenne et précision, la précision étant 1/variance. sous
+# Stan, elle est exprimée en moyenne et écart-type)
 
 mod <- "scripts/ephe-niveau3-mardi-cours-jags.R"
 

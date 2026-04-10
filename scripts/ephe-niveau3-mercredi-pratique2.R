@@ -236,14 +236,16 @@ points(rept.ppp)
 
 # exploration de la disposition des points
 
-proj4string(rept) <- CRS("+init=epsg:2154")
+rept1 <- sf::st_as_sf(rept, coords = c("xcoord","ycoord"), crs = , st_crs("+init=epsg:2154"))
+rept1 <- st_as_sf(rept, coords = c("xcoord", "ycoord"), crs = 2154)
+shape_rept<-st_transform(rept1, CRS("+init=epsg:2154"))
 
-rept2 <- spTransform(rept, CRS("+proj=longlat +datum=WGS84"))
+rept2 <- st_transform(rept1, CRS("+proj=longlat +datum=WGS84"))
 rept.df <- as.data.frame(rept2)
-mapview(x = rept.df$coords.x1, y = rept.df$coords.x2, map.types = "OpenStreetMap.Mapnik")
+mapview(x = rept2, map.types = "OpenStreetMap.Mapnik")
 
-rept3 = data.frame(slot(rept2, "coords"), slot(rept2, "data"))
-names(rept3)[1:2] = c("lon", "lat")
+# rept3 = data.frame(slot(rept2, "coords"), slot(rept2, "data"))
+# names(rept3)[1:2] = c("lon", "lat")
 
 # nombre de dates uniques de saisie de données
 

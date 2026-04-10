@@ -31,6 +31,14 @@ luse <- read.table(
   sep = "\t"
 )
 
+# grille de référence
+
+grille <- read.table(
+  "donnees/reptiles_grille.txt",
+  header = T,
+  sep = "\t"
+)
+
 ## Diversité taxonomique -------------------------------------------------------
 
 # richesse spécifique

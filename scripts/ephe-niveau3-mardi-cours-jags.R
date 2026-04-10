@@ -13,8 +13,8 @@ consommation[i] ~ dbern(psi[i])
   
 # priors
   
-alpha ~ dnorm(0,0.5)
-beta ~ dnorm(0,0.5)
+alpha ~ dnorm(0,0.25)
+beta ~ dnorm(0,0.25)
   
   
 }

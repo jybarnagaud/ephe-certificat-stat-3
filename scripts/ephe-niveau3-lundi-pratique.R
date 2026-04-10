@@ -89,14 +89,14 @@ plot_model(mod.tetras, type = "eff", terms = "NAOdjfm")
 
 plot_model(
   mod.tetras,
-  type = "pred",
+  type = "re",
   terms = c("NAOdjfm [all]", "UN"),
   pred.type = "re"
 )
 
 # on rescale
 
-plot(res.p, residuals = T) + ylim(0, 15)
+plot(res.p, show_residuals = T) + ylim(0, 15)
 
 # modèle 2
 
@@ -116,7 +116,7 @@ r.squaredGLMM(mod.tetras2)
 # affecté de beaucoup d'incertitude
 
 res.p <- ggemmeans(mod.tetras2, terms = "NAOdjfm [all]")
-plot(res.p, residuals = T) + ylim(0, 100)
+plot(res.p, show_residuals = T) + ylim(0, 100)
 
 plot_model(mod.tetras2, type = "eff", terms = "NAOdjfm")
 

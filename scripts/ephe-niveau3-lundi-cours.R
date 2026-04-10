@@ -11,7 +11,6 @@ library(lme4)
 library(ggeffects)
 library(patchwork)
 library(DHARMa)
-library(maptools)
 library(questionr)
 library(ggplot2)
 library(viridis)
@@ -88,7 +87,7 @@ plot(m.naif)
 
 # la prédiction parait correcte
 
-plot(ggpredict(m.naif),add.data=T)
+plot(ggpredict(m.naif),show_data=T)
 
 # variabilité des résidus par blocs : sous l'hypothèse du modèle linéaire, cette
 # variation ne devrait pas exister
@@ -165,9 +164,9 @@ moy.sim.b2
 ic.sim.b2
 
 m.rand3 <- lmer(reponse2~predicteur+(predicteur|blocs),data=data.sim)
-confint(m.rand3)
+summary(m.rand3)
 
-## cas d'étude : la chenille processionnaire
+## cas d'étude : la chenille processionnaire------------------------------------
 
 chenilles <- read.csv2("donnees/chenille_processionnaire.csv",row.names=1, encoding="UTF-8")
 chenilles$prop_attaq <- chenilles$nbpinsattac / chenilles$nbpins
@@ -216,7 +215,7 @@ plot(mod.nord)
 
 summary(mod.nord)
 p.nord <- ggpredict(mod.nord,terms = "annee_resc")%>%
-  plot(residuals=T,log.y=T)
+  plot(show_residuals=T,log_y=T)
 p.nord
 
 # GLM sur toutes les régions
@@ -236,7 +235,7 @@ odds.ratio(mod0)
 # cartographie des résidus
 
 chenilles$res.mod0 <- residuals(mod0)
-p0 <- plot(ggpredict(mod0, terms = c("annee_resc")), residuals = T)
+p0 <- plot(ggpredict(mod0, terms = c("annee_resc")), show_residuals = T)
 
 p1a <- ggplot(regions) +
   geom_sf() +
@@ -244,13 +243,13 @@ p1a <- ggplot(regions) +
              mapping = aes(x = longitude, y = latitude, colour = res.mod0),
              size = 2) +
   scale_color_viridis(discrete = F) + 
-  labs(color = "R?sidus du \n GLM binomial") + 
+  labs(color = "Résidus du \n GLM binomial") + 
   theme_classic()
 
 p1b <- ggplot(chenilles) +
   aes(x = placette, y = res.mod0) +
   geom_boxplot() +
-  labs(x = "Placettes", y = "R?sidus du GLM binomial") +
+  labs(x = "Placettes", y = "Résidus du GLM binomial") +
   theme_classic() + 
   theme(axis.text.x = element_text(angle = 90))
 
@@ -293,17 +292,17 @@ testDispersion(simulationOutput, alternative = "greater", plot = FALSE) # seulem
 
 # graphiques de résultats : effets fixes
 
-p3 <- plot(ggpredict(mod2,terms="annee_resc"),residuals=T)+
+p3 <- plot(ggpredict(mod2,terms="annee_resc"),show_residuals=T)+
   labs(x="Années",y="Taux d'infestation",title="")
 p3
 
-p4 <- plot(ggpredict(mod2,type="re"),residuals=T)
+p4 <- plot(ggpredict(mod2,type="random"),show_residuals=T)
 p4
 
-p5 <- plot(ggpredict(mod2,terms=c("annee_resc","region"),type="re"),residuals=T)
+p5 <- plot(ggpredict(mod2,terms=c("annee_resc","region"),type="random"),show_residuals=T)
 p5
 
-p6 <- plot(ggpredict(mod2,terms=c("annee_resc","placette"),type="re"),residuals=T)
+p6 <- plot(ggpredict(mod2,terms=c("annee_resc","placette"),type="random"),show_residuals=T)
 p6
 
 # effets aléatoires
@@ -429,9 +428,9 @@ cowplot::plot_grid(p.mix1,p.mix2,p.mix3,p.mix4)
 
 # avec ggeffects, fonction ggemmeans : prédicteurs maintenus à leur valeur moyenne
 
-p.eff1 <- plot(ggemmeans(mod.perche3,terms="sST"),residuals=T)
-p.eff2 <- plot(ggemmeans(mod.perche3,terms="sHdom"),residuals=T)
-p.eff3 <- plot(ggemmeans(mod.perche3,terms="essence"),residuals=T)
+p.eff1 <- plot(ggemmeans(mod.perche3,terms="sST"),show_residuals=T)
+p.eff2 <- plot(ggemmeans(mod.perche3,terms="sHdom"),show_residuals=T)
+p.eff3 <- plot(ggemmeans(mod.perche3,terms="essence"),show_residuals=T)
 cowplot::plot_grid(p.eff1,p.eff2,p.eff3)
 
 # modèle initial (GLM) avec variables centrées-réduites
@@ -477,9 +476,9 @@ confint(m2)
 confint(m3) # comparez les intervalles de confiance
 
 p0 <- ggplot(y2)+aes(x=x,y=value,col=Var2)+	geom_point()+labs(title="données brutes")
-p1 <- plot(ggpredict(m1,terms="x"),add.data=T)+labs(title="sans effet bloc")
-p2 <- plot(ggpredict(m2,terms="x"),add.data=T)+labs(title="effet aléatoire sur l'intercept")
-p3 <- plot(ggpredict(m3,terms="x"),add.data=T)+labs(title="effet aléatoire intercept et pente")
+p1 <- plot(ggpredict(m1,terms="x"),show_data=T)+labs(title="sans effet bloc")
+p2 <- plot(ggpredict(m2,terms="x"),show_data=T)+labs(title="effet aléatoire sur l'intercept")
+p3 <- plot(ggpredict(m3,terms="x"),show_data=T)+labs(title="effet aléatoire intercept et pente")
 # la pente de x et son intercept ne changent pas, mais les intervalles de confiance sont fortement affectés par la structure en blocs
 
 cowplot::plot_grid(p0,p1,p2,p3)
@@ -524,7 +523,7 @@ cowplot::plot_grid(pmix1,pmix2,pmix3,pmixslope1,pmixslope2,pmixslope3)
 
 # phénologie du débourrement des chênes et des pins en forêt d'Orléans
 
-d_pheno <- read.table("phenologie_debourrement.txt",header=T,sep="\t")
+d_pheno <- read.table("donnees/phenologie_debourrement.txt",header=T,sep="\t")
 
 # on explore les donn?es
 
@@ -604,23 +603,23 @@ mod.db5 <- lmer(date_debourrement~essence+diametre+(1|annee)+(1|code_parcelle/co
 
 # effet essence
 
-m.spat <- plot(ggemmeans(mod.db3,terms="essence"),residuals=T)+labs(title="sans effet année")
-m.spat.an <- plot(ggemmeans(mod.db4,terms="essence"),residuals=T)+labs(title="avec effet année fixe")
-m.spat.an2 <- plot(ggemmeans(mod.db5,terms="essence"),residuals=T)+labs(title="avec effet aléatoire année")
+m.spat <- plot(ggemmeans(mod.db3,terms="essence"),show_residuals=T)+labs(title="sans effet année")
+m.spat.an <- plot(ggemmeans(mod.db4,terms="essence"),show_residuals=T)+labs(title="avec effet année fixe")
+m.spat.an2 <- plot(ggemmeans(mod.db5,terms="essence"),show_residuals=T)+labs(title="avec effet aléatoire année")
 cowplot::plot_grid(m.spat,m.spat.an,m.spat.an2)
 
 # effet diamètre
 
-m.spat <- plot(ggemmeans(mod.db3,terms="diametre"),residuals=T)+labs(title="sans effet année")
-m.spat.an <- plot(ggemmeans(mod.db4,terms="diametre"),residuals=T)+labs(title="avec effet année fixe")
-m.spat.an2 <- plot(ggemmeans(mod.db5,terms="diametre"),residuals=T)+labs(title="avec effet aléatoire année")
+m.spat <- plot(ggemmeans(mod.db3,terms="diametre"),show_residuals=T)+labs(title="sans effet année")
+m.spat.an <- plot(ggemmeans(mod.db4,terms="diametre"),show_residuals=T)+labs(title="avec effet année fixe")
+m.spat.an2 <- plot(ggemmeans(mod.db5,terms="diametre"),show_residuals=T)+labs(title="avec effet aléatoire année")
 cowplot::plot_grid(m.spat,m.spat.an,m.spat.an2)
 
 # effets aléatoires
 
-dotplot(ranef(mod.emb3, condVar = TRUE,whichel="code_parcelle")) # effet parcelle
-dotplot(ranef(mod.emb3, condVar = TRUE,whichel="code_placette:code_parcelle")) # effet placette
-dotplot(ranef(mod.emb3, condVar = TRUE,whichel="annee")) # effet année
+dotplot(ranef(mod.db3, condVar = TRUE,whichel="code_parcelle")) # effet parcelle
+dotplot(ranef(mod.db3, condVar = TRUE,whichel="code_placette:code_parcelle")) # effet placette
+dotplot(ranef(mod.db3, condVar = TRUE,whichel="annee")) # effet année
 
 ## effet fixe année: solution plus réaliste du point de vue de l'échantillonnage
 

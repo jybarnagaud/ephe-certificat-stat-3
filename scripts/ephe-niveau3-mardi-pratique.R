@@ -66,7 +66,7 @@ monitor.naif <- c("alpha", "beta", "delta", "esp", "r.naif", "E", "E.rep")
 # lancer le modèle (run d'adaptation)
 
 jnz.naif <- jags.model(
-  file = "donnees/nouvelle_zelande_modele_ecol.R",
+  file = "scripts/nouvelle_zelande_modele_ecol.R",
   data = nzdata.naif,
   n.chains = 3,
   n.adapt = 1000
