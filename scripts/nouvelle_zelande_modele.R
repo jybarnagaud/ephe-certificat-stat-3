@@ -1,30 +1,31 @@
 model{
 
 # priors des covariables
-det.alpha~dnorm(0,0.0001)
-beta~dnorm(0,0.0001)
-delta~dnorm(0,0.0001)
-muyear~dnorm(0,0.0001) # prior de l'effet aléatoire années
+det.alpha~dnorm(0,0.01)
+beta~dnorm(0,0.01)
+delta~dnorm(0,0.01)
+muyear~dnorm(0,0.01) # prior de l'effet aléatoire années
 
 taualpha<-1/(sigalpha*sigalpha)
-sigalpha~dunif(0,100)
+sigalpha~dunif(0,10)
 
 tauyear<-1/(sigyear*sigyear)
-sigyear~dunif(0,100)
+sigyear~dunif(0,10)
 
 for (k in 1:nyears){
 	beta.det[k]~dnorm(0,0.0001)
-	mualpha[k]~dnorm(muyear,tauyear)
+	alpha[k]~dnorm(0,tauyear)
 }
+
+#-------------------#
+### VRAISEMBLANCE ###
+#-------------------#
 
 for(i in 1:npoints){
 	
 # vraisemblance de la couche de process
 	N[i] ~ dpois(esp[i])
-	log(esp[i])<-alpha[i]+beta*PROPNATFOR[i]+delta*altitude[i]
-
-# prior hiérarchique sur alpha: tous les sites faits une même année ont un prior commun (<=> effet aléatoire année)
-alpha[i]~dnorm(mualpha[year[i]],taualpha)
+	log(esp[i])<-alpha[year[i]]+beta*PROPNATFOR[i]+delta*altitude[i]
 	
 # hypothèse: l'abondance est fonction du site, de la proportion de forêt native sur le site et de l'altitude sur le site
 

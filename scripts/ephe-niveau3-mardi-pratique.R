@@ -150,7 +150,7 @@ monitor <- c(
   "delta",
   "mualpha",
   "muyear",
-  "det.alpha"
+  "p"
 )
 
 # lancer le modèle
@@ -170,7 +170,7 @@ N <- apply(obs, 1, max)
 inis <- list(N = N)
 
 jnz <- jags.model(
-  file = "donnees/nouvelle_zelande_modele.R",
+  file = "scripts/nouvelle_zelande_modele.R",
   data = nzdata,
   inits = inis,
   n.chains = 3,
