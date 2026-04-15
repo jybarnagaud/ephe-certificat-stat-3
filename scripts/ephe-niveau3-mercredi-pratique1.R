@@ -26,9 +26,25 @@ library(spdep) # une solution parmi d'autres pour les corrélogrammes spatiaux
 
 ## données ---------------------------------------------------------------------
 
+# NB dans la suite, on considère les années comme des réplicas dont on ne tient
+# pas explicitement compte dans l'analyse. Ce choix est discutable. On pourrait
+# aussi vouloir agréger le jeu de données pour ne considérer que sa composante
+# spatiale.
 
-chevreuils3 = read.csv2("donnees/chevreuils_alpes.csv",row.names=1)
+chevreuils0 <- read.csv2("donnees/chevreuils_alpes.csv",row.names=1)
 
+# agrégation des données pour compresser la variation temporelle
+
+chevreuils2 <- aggregate(chevreuils0$Abroutissement, by = list(chevreuils0$Numero.placette), FUN = "sum") 
+colnames(chevreuils2) <- c("Numero.placette","Grazed")
+chevreuils4 <- aggregate(chevreuils0$Abroutissement, by = list(chevreuils0$Numero.placette), FUN = "length")
+colnames(chevreuils4) <- c("Numero.placette","Yr.monitor")
+chevreuil.cov <- aggregate(chevreuils0[,c("X","Y","Densite_lin","Frequentation","Altitude","Pente","Tirs","Nb_spe")], by = list(chevreuils0$Numero.placette), FUN = "mean")
+colnames(chevreuil.cov)[1] <- "Numero.placette"
+
+chevreuil5 <- merge(chevreuils2, chevreuils4, by = "Numero.placette")
+chevreuil6 <- merge(chevreuil5,chevreuils0[,c("Nom","Numero.placette")], by = "Numero.placette")
+chevreuils3 <- merge(chevreuil6,chevreuil.cov, by = "Numero.placette")
 
 ## exploration -----------------------------------------------------------------
 
@@ -37,12 +53,13 @@ summary(chevreuils3)
 table(chevreuils3$Nom)
 
 # abroutissement (variable binaire)
-sum(chevreuils3$Abroutissement)
+sum(chevreuils3$Grazed>0)
+sum(chevreuils3$Yr.monitor>0)
+chevreuils3$Abr <- chevreuils3$Grazed/chevreuils3$Yr.monitor
 
 # carte de l'abroutissement
-chevreuils3$fabr = factor(chevreuils3$Abroutissement)
 carte.abroutissement = chevreuils3%>%
-  mapview(zcol = "fabr",
+  mapview(zcol = "Abr",
           xcol="X",ycol="Y",
           legend = T,
           map.types = "OpenStreetMap",
@@ -98,21 +115,21 @@ chart.Correlation(chevreuils3[,c("Tirs","lfrequentation","Densite_lin","Altitude
 ## le modèle -------------------------------------------------------------------
 
 # on commence simple
-m1= glm(Abroutissement~Densite_lin + lfrequentation + Altitude + Pente + Tirs + Nom,family=binomial,data=chevreuils3)
+m1= glm(cbind(Grazed,Yr.monitor-Grazed)~Densite_lin + lfrequentation + Altitude + Pente + Tirs + Nom,family=binomial,data=chevreuils3)
 
 # résidus
 par(mfrow=c(2,2))
-plot(m1) # ces résidus laissent imaginer qu'on explique peu de variance avec ce modèle
+plot(m1) 
 
 # pour avoir des relations plus flexibles : un GAM
-m2= gam(Abroutissement~s(Densite_lin) + s(lfrequentation) + s(Altitude) + s(Pente) + s(Tirs) + Nom,family=binomial,data=chevreuils3)
+m2= gam(cbind(Grazed,Yr.monitor-Grazed)~s(Densite_lin) + s(lfrequentation) + s(Altitude) + s(Pente) + s(Tirs) + Nom,family=binomial,data=chevreuils3)
 
 plot(predict(m2),residuals(m2))
 gam.check(m2)
 
 # on peut penser que les relations sont variables par massif
 chevreuils3$Nom = factor(chevreuils3$Nom)
-m3= gam(Abroutissement~ 
+m3= gam(cbind(Grazed,Yr.monitor-Grazed)~ 
           Nom + 
           s(Densite_lin,by = Nom) + 
           s(lfrequentation,by = Nom) + 
@@ -150,7 +167,7 @@ plot(dist.chevreuil,coords=xy.chev)
 plot(cg.chev) # il y a un léger patron d'autocorrélation spatiale résiduelle
 
 # on tente de corriger un peu la variabilité spatiale
-m4= gam(Abroutissement~ 
+m4= gam(cbind(Grazed,Yr.monitor-Grazed)~ 
           Nom + 
           s(Densite_lin,by = Nom) + 
           s(lfrequentation,by = Nom) + 
