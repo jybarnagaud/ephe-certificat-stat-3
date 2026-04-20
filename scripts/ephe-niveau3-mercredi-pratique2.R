@@ -7,6 +7,9 @@
 # objectif de la séquence : explorer des données spatiales issues d'un échantillonnage
 # opportuniste, proposer une solution de modélisation, adapter progressivement
 # le modèle
+
+# tutoriel sur les ppm  https://towardsdatascience.com/understanding-point-process-model-with-r-983553ca2a86/
+# introduction : https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12352
 #------------------------------------------------------------------------------#
 
 library(sf)
@@ -41,7 +44,7 @@ rept.ppp <- rjitter(rept.ppp, 0.01)
 ## exploration -----------------------------------------------------------------
 
 # données brutes
-plot(rept.ppp, main = "Lézard ocellé")
+plot(rept.ppp, main = "Lézard https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12352ocellé")
 
 # kernel de l'intensité (= espérance) du patron
 plot(density(rept.ppp))
@@ -236,7 +239,7 @@ points(rept.ppp)
 
 # exploration de la disposition des points
 
-rept1 <- sf::st_as_sf(rept, coords = c("xcoord","ycoord"), crs = , st_crs("+init=epsg:2154"))
+#rept1 <- sf::st_as_sf(rept, coords = c("xcoord","ycoord"), crs = , st_crs("+init=epsg:2154"))
 rept1 <- st_as_sf(rept, coords = c("xcoord", "ycoord"), crs = 2154)
 shape_rept<-st_transform(rept1, CRS("+init=epsg:2154"))
 
